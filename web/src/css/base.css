@@ -1,0 +1,22 @@
+/*宽屏布局*/
+body{width: 1616px;}
+/*顶部通知栏*/
+.top-notify{height: 36px;background: #f3f3f3;}
+.top-notify p{padding: 7px 0;font: 12px/22px "微软雅黑";}
+.top-notify span{margin-left: 206px;color: #333;}
+.top-notify a{margin-left: 12px;color: #21a557;}
+.top-notify i{display:inline-block;width:64px;height:12px;margin-left: 668px;background: url(../../res/images/sprite.png) no-repeat -160px -102px;}
+/*导航区*/
+.nav{height: 81px;padding: 1px 0 7px 0;font: 16px/21px "微软雅黑";color: #666;}
+.nav p{display:inline-block;margin: 30px 0;height: 21px;vertical-align: middle;}
+.nav i{display: inline-block;width: 235px;height: 21px;margin-left: 206px;background: url(../../res/images/sprite.png) no-repeat 0 0;}
+.nav button{display:inline-block;width: 54px;height: 21px;border:none;margin-left: 31px;background: url(../../res/images/sprite.png) no-repeat 0 -102px;}
+.nav span{margin-left: 14px;font: 12px/21px "宋体";}
+.nav a[href*="open"]{margin-left: 418px;}
+.nav a[href*="study"]{margin-left: 54px;}
+.nav a[href*="icourse"]{margin-left: 54px;}
+.nav .search{display: inline-block;width:18px;height:19px;margin-left: 30px;background: url(../../res/images/sprite.png) no-repeat -273px 0;vertical-align: middle;}
+/*hover状态*/
+.nav a:hover{color: #28b856;}
+.nav .search:hover{background: url(../../res/images/sprite.png) no-repeat -273px -102px;}
+/*轮播图*/
