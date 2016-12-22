@@ -1,9 +1,11 @@
 /*宽屏布局*/
 body{width: 1616px;}
+ul{font-size: 0;}
+
 /*顶部通知栏*/
 .top-notify{height: 36px;background: #f3f3f3;}
 .top-notify p{padding: 7px 0;font: 12px/22px "微软雅黑";}
-.top-notify span{margin-left: 206px;color: #333;}
+.top-notify span{margin-left: 206px;}
 .top-notify a{margin-left: 12px;color: #21a557;}
 .top-notify i{display:inline-block;width:64px;height:12px;margin-left: 668px;background: url(../../res/images/sprite.png) no-repeat -160px -102px;}
 /*导航区*/
@@ -15,8 +17,33 @@ body{width: 1616px;}
 .nav a[href*="open"]{margin-left: 418px;}
 .nav a[href*="study"]{margin-left: 54px;}
 .nav a[href*="icourse"]{margin-left: 54px;}
-.nav .search{display: inline-block;width:18px;height:19px;margin-left: 30px;background: url(../../res/images/sprite.png) no-repeat -273px 0;vertical-align: middle;}
+.nav .search{display: inline-block;width: 18px;height: 19px;margin-left: 30px;background: url(../../res/images/sprite.png) no-repeat -273px 0;vertical-align: middle;}
 /*hover状态*/
 .nav a:hover{color: #28b856;}
 .nav .search:hover{background: url(../../res/images/sprite.png) no-repeat -273px -102px;}
 /*轮播图*/
+.fixed .banner{height: 460px;}
+/*产品介绍*/
+.fixed .product{height: 298px;margin-left: 206px;}
+.product li{display: inline-block;width: 423px;height: 174px;margin: 62px 0;}
+.product i,.product div{display: inline-block;vertical-align: top;}
+.product i{width: 80px;height: 80px;margin: 6px 20px 0 4px;}
+.product .open-logo{background: url(../../res/images/sprite.png) no-repeat 0 -22px;}
+.product .study-logo{background: url(../../res/images/sprite.png) no-repeat -80px -22px;}
+.product .mooc-logo{background: url(../../res/images/sprite.png) no-repeat -160px -22px;}
+.product li h3{font: 22px/1 "微软雅黑";}
+.product li p{width: 242px;margin-top: 12px;font: 14px/24px "微软雅黑";color: #666;}
+.product li a{display: inline-block;margin-top: 26px;font: 14px/24px "微软雅黑";color: #39a030;}
+.product li a:hover{text-decoration: underline;}
+/*工作环境*/
+.fixed .work{height: 220px;}
+.work li{display: inline-block;width: 320px;height: 219px;margin-left: 4px;}
+.work li:first-child{margin-left: 0;}
+
+/*主要内容区*/
+.flow{background: #f8f8f8;font-size:0;}
+/*居中布局*/
+.flow .center{width: 1206px;height: 800px;margin: 0 auto;background: red;}
+/*两栏布局*/
+.left,.right{display: inline-block;}
+
