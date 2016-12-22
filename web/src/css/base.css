@@ -41,9 +41,25 @@ ul{font-size: 0;}
 .work li:first-child{margin-left: 0;}
 
 /*主要内容区*/
-.flow{background: #f8f8f8;font-size:0;}
+.flow{padding-top: 81px;background: #f8f8f8;font-size: 0;}
 /*居中布局*/
-.flow .center{width: 1206px;height: 800px;margin: 0 auto;background: red;}
+.center{width: 1206px;margin: 0 auto;}
 /*两栏布局*/
 .left,.right{display: inline-block;}
-
+.left{width: 980px;}
+.right{width: 225px;margin-top: 3px;margin-left: 1px;}
+/*tab按钮*/
+.left .tab{width: 400px;box-shadow: 0 1px 2px #d4d3d3;} /*ie8不兼容box-shadow*/
+.left .tab button{width: 200px;height: 50px;border: none;font: 20px/22px "微软雅黑";color: white;background: #39a030;}
+/*课程列表*/
+.left ul{margin-top: 29px;}
+.left ul li{display: inline-block;width: 225px;height: 228px;margin-right: 20px;margin-bottom: 20px;background: white;box-shadow: 0 1px 2px #e6e6e6;}
+.left ul li img{width: 223px;height: 124px;margin: 1px;background: blue;}
+.left ul li h5{margin-left: 5px;margin-top: 8px;font: 12px/1 "微软雅黑";text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+.left ul li .normal{height: 82px;margin-left: 5px;}
+.left ul li span{display: block;margin-top: 10px;}
+.left ul li .publisher{font: 12px/1 "微软雅黑";color: #999;}
+.left ul li .people{width: 40px;height: 16px;border: 1px solid #ddd;font: 8px/16px "微软雅黑";color: #bbb;border-radius: 1px;} /*ie8不兼容border-radius*/
+.left ul li .people:before{content: "";display: inline-block;width: 9px;height: 12px;margin:2px 6px 2px 3px;background: url(../../res/images/sprite.png) no-repeat -234px 0;vertical-align: middle;}
+.left ul li .price{font: 12px/1 "微软雅黑";color: #ff3f00;}
+.left ul li .hover{display: none;}
