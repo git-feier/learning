@@ -41,19 +41,21 @@ ul{font-size: 0;}
 .work li:first-child{margin-left: 0;}
 
 /*主要内容区*/
-.flow{padding-top: 81px;background: #f8f8f8;font-size: 0;}
+.flow{padding-top: 81px;padding-bottom: 120px;background: #f8f8f8;font-size: 0;}
 /*居中布局*/
 .center{width: 1206px;margin: 0 auto;}
 /*两栏布局*/
 .left,.right{display: inline-block;}
 .left{width: 980px;}
 .right{width: 225px;margin-top: 3px;margin-left: 1px;}
+
+/*左栏*/
 /*tab按钮*/
 .left .tab{width: 400px;box-shadow: 0 1px 2px #d4d3d3;} /*ie8不兼容box-shadow*/
 .left .tab button{width: 200px;height: 50px;border: none;font: 20px/22px "微软雅黑";color: white;background: #39a030;}
 /*课程列表*/
 .left ul{margin-top: 29px;}
-.left ul li{display: inline-block;width: 225px;height: 228px;margin-right: 20px;margin-bottom: 20px;background: white;box-shadow: 0 1px 2px #e6e6e6;}
+.left ul li{display: inline-block;position: relative;width: 225px;height: 228px;margin-right: 20px;margin-bottom: 20px;background: white;box-shadow: 0 1px 2px #e6e6e6;}
 .left ul li img{width: 223px;height: 124px;margin: 1px;background: blue;}
 .left ul li h5{margin-left: 5px;margin-top: 8px;font: 12px/1 "微软雅黑";text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
 .left ul li .normal{height: 82px;margin-left: 5px;}
@@ -63,3 +65,44 @@ ul{font-size: 0;}
 .left ul li .people:before{content: "";display: inline-block;width: 9px;height: 12px;margin:2px 6px 2px 3px;background: url(../../res/images/sprite.png) no-repeat -234px 0;vertical-align: middle;}
 .left ul li .price{font: 12px/1 "微软雅黑";color: #ff3f00;}
 .left ul li .hover{display: none;}
+/*翻页器*/
+.left .turn-page{width: 302px;height: 20px;margin-top: 31px;margin-left: 658px;text-align: center;vertical-align: middle;}
+.left .turn-page i{display: inline-block;width: 30px;font: 14px/20px "微软雅黑";color: white;background: #9dd8b1;}
+.left .turn-page .pageno{display: inline-block;width: 224px;padding: 0 9px;}
+.left .turn-page .pageno i{width: 20px;margin: 0 4px;color: #666;background: transparent;}
+/*hover状态*/
+.left .turn-page:hover{cursor: pointer;}
+.left .turn-page .pageno i:hover{color: white;background: #9dd8b1;}
+
+/*右栏*/
+/*机构介绍*/
+.right{vertical-align: top;}
+.right h4{font: 16px/22px "微软雅黑";color: #333;}
+.right .agency{height: 229px;box-shadow: 0 1px 2px #d4d3d3;background: white;}
+.right .agency h4{height: 22px;border-bottom: 1px solid #ddd;padding: 16.5px 0 16.5px 20px;} 
+.right .agency p{margin-top: 20px;margin-left: 22px;font: 14px/22px "微软雅黑";color: #666;}
+.right .agency img{width: 180px;height: 110px;}
+/*最热排行*/
+.right .hot-rank{margin-top: 21px;background: white;box-shadow: 0 1px 2px #d4d3d3;}
+.right .hot-rank h4{height: 22px;padding: 17px 0 17px 20px;border-bottom: 1px solid #eee;}
+.right .hot-rank ul{margin:19px 0 0 20px;padding-bottom: 1px;}
+.right .hot-rank ul li{height: 50px;margin-bottom: 20px;}
+.right .hot-rank ul li img{display: inline-block;width: 50px;height: 50px;background: blue;}
+.right .hot-rank ul li div{display: inline-block;height: 50px;margin-left: 12px;vertical-align: top;}
+.right .hot-rank ul li div h5{margin-bottom: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font: 14px/1 "微软雅黑";}
+.right .hot-rank ul li div span{display: inline-block;font: 8px/14px "微软雅黑";color: #bbb;}
+.right .hot-rank ul li div span:before{content: "";display: inline-block;width: 9px;height: 12px;margin:1px 6px 1px 1px;background: url(../../res/images/sprite.png) no-repeat -234px 0;vertical-align: middle;}
+
+/*页脚*/
+.footer{height: 110px;padding: 82px 380px 70px 256px;background: #2c3339;font-size: 0;}
+.footer div,.footer ul{display: inline-block;}
+.footer div i{display: inline-block;width: 235px;height: 21px;margin-top: 10px;background: url(../../res/images/sprite.png) no-repeat 0 -124px;}
+.footer div p{margin-top: 29px;font: 12.5px/25px "微软雅黑";color: white;}
+.footer ul li{margin-bottom: 15px;font: 14.5px/1 "微软雅黑";color: white;}
+.footer ul li:first-child{font: 12.5px/1 "微软雅黑";}
+.footer ul li a{font: 14.5px/1 "微软雅黑";color: white;}
+.footer ul li a:hover{text-decoration: underline;}
+.footer .link{margin-left: 150px;}
+.footer .we{margin-left: 98px;}
+.footer .we .care:after{content: "";display: inline-block;width: 20px;height: 16px;margin-left: 11px;background: url(../../res/images/sprite.png) no-repeat -253px 0;vertical-align: middle;}
+.footer .more{margin-left: 104px;vertical-align: top;}
