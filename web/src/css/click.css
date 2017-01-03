@@ -1,0 +1,6 @@
+/*js实现tab切换*/
+.jsclick.tab.button.checked{color: #666;background: white;}
+.jsclick.tab.button.nochecked{color: white;background: #39a030;}
+/*导航区关注按钮*/
+.jsclick.nav.button{width: 106px;vertical-align: top;background: url(../../res/images/sprite.png) no-repeat -54px -102px;cursor: default;}
+.jsclick.nav.a.open{margin-left: 366px;}

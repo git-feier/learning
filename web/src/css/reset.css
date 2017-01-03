@@ -21,5 +21,6 @@
 	body{background:#fff;}
 	a,a:hover{color:#333;}
 	/* 以下可加项 */
+	h1,h2,h3,h4,h5,h6,p{cursor: default;}
 
 
