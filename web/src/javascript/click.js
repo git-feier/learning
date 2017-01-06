@@ -1,19 +1,4 @@
-//tab点击切换
-var tab=left.querySelector(".tab");
-addEvent(tab,"click",switchTab);
-function switchTab(event){
-	Event(event);
-	var target=Target(event);
-	var tab=target.parentNode;
-	var button=tab.getElementsByTagName("button");
-	if(target==button[0]){
-		button[0].className="jsclick tab button checked";
-		button[1].className="jsclick tab button nochecked";
-	}else if(target==button[1]){
-		button[1].className="jsclick tab button checked";
-		button[0].className="jsclick tab button nochecked";
-	}
-}
+
 //cookie设置函数
 function setCookie(name,value,expires,path,domain,secure){
 	var cookie=encodeURIComponent(name)+"="+encodeURIComponent(value);
@@ -86,4 +71,156 @@ function get(url,options,callback){//定义get函数
 			}
 	    }
 	}	
+}
+
+//构造获取课程列表数据对象
+function GetList(api,queryPara){
+	//api为请求地址
+	//queryPara为查询参数(类型为object)
+	this.api=api;
+	this.queryPara=queryPara;
+}
+GetList.prototype={
+	get:function(){
+			var obj=this;
+			get(this.api,this.queryPara,callback);//发起请求
+			function callback(data){
+				if(obj.queryPara){
+					return obj._getCouresData(data);
+				}else{
+					return obj._getRankData(data);
+				}
+			}
+		},
+	_getCouresData:function(data){
+			var couresData=JSON.parse(data);//JSON转js对象
+			// console.log(couresData);
+			var n=this.queryPara.psize;//每页显示的课程数
+			//获取通用节点
+			var left=document.querySelector(".left");
+			var ul=left.getElementsByTagName("ul")[0];
+			var li=ul.getElementsByTagName("li");
+			//翻页器
+			var pageNo=couresData.totalPage;//获取总页数
+			var turnPage=left.querySelector(".turn-page");
+			var pageno=turnPage.querySelector(".pageno");
+			var newI=[];//保存页码
+			pageno.innerHTML="";//初始化页码
+			for(var j=0;j<pageNo;j++){//加载页码
+				var pagenoI=document.createElement("i");
+				newI[j]=pageno.appendChild(pagenoI);
+				newI[j].innerHTML=j+1;
+				if(couresData.pagination.pageIndex==j+1){
+					//设置页码样式
+					newI[j].style.background="#9dd8b1";
+					newI[j].style.color="white";
+					newI[j].style.cursor="default";
+				}
+			}
+			//最后一页
+			var totalCount=couresData.totalCount;//返回数据总数
+			var pageSize=couresData.pagination.pageSize;//每页数据个数
+			if(pageSize>couresData.list.length){//若请求的数据个数大于返回的本页数据个数
+				n=totalCount%pageSize;
+				var remain=pageSize-n;
+				for(var k=remain-1;k>=0;k--){
+					li[n+k].style.visibility="hidden";//隐藏多余的项
+				}
+			}else{//否则
+				for(var k=0;k<n;k++){
+					li[k].style.visibility="visible";//全部显示
+				}
+			}
+			//填充课程列表
+			for(var i=0;i<n;i++){//循环填充
+				var middlePhotoUrl=couresData.list[i].middlePhotoUrl;//提取图片地址
+				var name=couresData.list[i].name;//提取课程名称
+				var provider=couresData.list[i].provider;//提取发布机构
+				var learnerCount=couresData.list[i].learnerCount;//提取在线人数
+				var price=couresData.list[i].price;//提取价格
+				var categoryName=couresData.list[i].categoryName;//提取分类
+				var description=couresData.list[i].description;//提取描述
+				//多行文字字符处理
+				description=description.length>64?description.slice(0,60)+"...":description;
+				//获取相关节点
+				var img=li[i].getElementsByTagName("img")[0];
+				var h5=li[i].getElementsByTagName("h5")[0];
+				var normal=getElementsByClassName(li[i],"normal")[0];
+				var nspan=normal.getElementsByTagName("span");
+				var hover=getElementsByClassName(li[i],"hover")[0];
+				var hspan=hover.getElementsByTagName("span");
+				var p=getElementsByClassName(li[i],"hover")[1];
+				//将数据呈现至页面
+				img.setAttribute("src",middlePhotoUrl);
+				writeText(h5,name);
+				//默认状态
+				writeText(nspan[0],provider);
+				writeText(nspan[1],learnerCount);
+				writeText(nspan[2],price==0?"免费":"¥ "+price+".00");
+				//hover状态
+				writeText(hspan[0],learnerCount+"人在学");
+				writeText(hspan[1],"发布者: "+provider);
+				writeText(hspan[2],"分类: "+categoryName);
+				writeText(p,description);
+			}
+		},
+	_getRankData:function(data){
+			var hotCouresData=JSON.parse(data);//JSON转js对象
+			//console.log(hotCouresData);
+			//获取相关节点
+			var rank=getElementsByClassName(document,"hot-rank")[0];
+			var ul=rank.getElementsByTagName("ul")[0];
+			var li=ul.getElementsByTagName("li");
+			var times=0;//记录调用次数
+			fillRankData(0);//填充默认数据
+			var intervalID=setInterval(update,5000);//每5秒更新一门课
+			//更新课程函数
+			function update(){
+				if(times<10){
+					times++;
+				}else{
+					times=0;
+				}
+				fillRankData(times);
+			}
+			//填充课程数据函数
+			function fillRankData(times){
+				for(var i=0;i<10;i++){
+					//获取相关节点
+					var img=li[i].getElementsByTagName("img")[0];
+					var h5=li[i].getElementsByTagName("h5")[0];
+					var span=li[i].getElementsByTagName("span")[0];
+					//提取数据
+					var name=hotCouresData[i+times].name;
+					var smallPhotoUrl=hotCouresData[i+times].smallPhotoUrl;
+					var learnerCount=hotCouresData[i+times].learnerCount;
+					//填充数据
+					img.setAttribute("src",smallPhotoUrl);
+					writeText(h5,name);
+					writeText(span,learnerCount);
+				}
+			}
+	}
+};
+
+//tab点击样式
+function switchTab(event){
+	Event(event);
+	var target=Target(event);
+	var tab=target.parentNode;
+	var button=tab.getElementsByTagName("button");
+	if(target==button[0]){
+		button[0].className="jsclick tab button checked";
+		button[1].className="jsclick tab button nochecked";
+	}else if(target==button[1]){
+		button[1].className="jsclick tab button checked";
+		button[0].className="jsclick tab button nochecked";
+	}
+}
+//数据请求
+function requestCoures(pageNO,psize,type){
+	var couresPara={pageNo:pageNO,psize:psize,type:type};//查询参数
+	var api='http://study.163.com/webDev/couresByCategory.htm';//请求地址
+	var couresList=new GetList(api,couresPara);//初始化一个课程列表
+	couresList.get();//获取课程数据
 }

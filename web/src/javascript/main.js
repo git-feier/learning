@@ -19,35 +19,6 @@ if(cookie.notify!=1){//判断cookie值
 
 //导航区关注
 
-//定义数据
-var loginWindow={
-	html:"<form class='login'>\
-			<div class='ref'>\
-				<p>登录网易云课堂</p>\
-				<div>\
-					<input type='text' name='userName'>\
-				</div>\
-				<div>\
-					<input type='password' name='password'>\
-				</div>\
-				<div>\
-					<button type='submit'>登录</button>\
-				</div>\
-				<i class='login close'></i>\
-			</div>\
-		</form>",
-	css:"<style>\
-		.login,.login p,.login input,.login button{margin: 0;padding: 0;outline: 0;}\
-		.login{width: 387px;height: 288px;position: absolute;left: 50%;top: 50%;margin-top: -144px;margin-left: -193.5px;background: white;}\
-		.login .ref{position: relative;padding-top: 24px;padding-left: 40px;}\
-		.login p{margin-bottom: 16px;font: 18px/28px '微软雅黑';color: #444;cursor: default;}\
-		.login input{width: 282px;height: 43px;margin-bottom: 15px;border: 1px solid #dfdfdf;padding-left: 11px;box-shadow: inset 2px 2px #f1f1f1;font: 16px/43px '微软雅黑';color: #ccc;}\
-		.login button{width: 293px;height: 46px;margin-top: 14px;border: 0;box-shadow: 2px 2px #d5e3da;font: 16px '微软雅黑';color: white;cursor: pointer;background: #20a942;}\
-		.login.close{display:block;width: 11px;height: 10px;position: absolute;top: 10px;right: 8px;margin: 0 0 0 174.5px;background: url(res/images/sprite.png) no-repeat -243px 0;cursor: pointer;}\
-	    </style>",
-	coverCssText:"width: auto;height: auto;position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: #333;opacity: 0.5;-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(opacity=50)'",
-	locationCssText:"position: fixed;left: 0;right: 0;top: 0;bottom: 0;"
-};
 //获取关注节点
 var nav=document.querySelector(".nav");
 var navButton=nav.getElementsByTagName("button")[0];
@@ -91,7 +62,7 @@ function login(event){
                 get('http://study.163.com/webDev/login.htm',data,callback);//Ajax提交表单
                 function callback(backdata){
                 	if(backdata==1){//若登录成功
-                	  console.log('登录成功');
+                	  //console.log('登录成功');
                 	  var name="loginSuc",
 					  	  value=1,
 					      expires=new Date(2020,11);//失效时间
@@ -100,7 +71,7 @@ function login(event){
                 	  loginPopup.addevent().end();//关闭弹窗
                 	  get('http://study.163.com/webDev/attention.htm',"",function(data){//关注请求
                 	  	if(data==1){//若关注成功
-                	  		console.log('关注成功');
+                	  		//console.log('关注成功');
                 	  		var name="followSuc",
 							  	value=1,
 							    expires=new Date(2020,11);//失效时间
@@ -139,39 +110,12 @@ if(cookie.followSuc==1){
 
 
 
-
-
-
 //机构视频逻辑
 
 //获取节点
 var right=document.querySelector(".right");
 var agency=getElementsByClassName(right,"agency")[0];
-var rank=getElementsByClassName(right,"hot-rank")[0];
 var agencyImg=agency.getElementsByTagName("img")[0];
-//定义数据
-var video={
- 	html:"<div class='video'>\
-			<div class='ref'>\
-				<h5>请观看下面的视频</h5>\
-				<div>\
-					<video autoplay controls>\
-						<source src='http://mov.bn.netease.com/open-movie/nos/mp4/2014/12/30/SADQ86F5S_shd.mp4' type='video/mp4'>\
-						你的浏览器不支持video标签\
-					</video>\
-				</div>\
-				<i></i>\
-			</div>\
-		</div>",
-	css:"<style>.video div,.video h5{margin: 0;padding: 0;border: 0;font: 18px/28px '微软雅黑';color: #444;text-align: left;}\
-		.video{position: absolute;left: 50%;top: 50%;margin-top: -338px;margin-left: -475px;}\
-		.video .ref{position: relative;width: 950px;height: 676px;padding:24px 30px 40px 31px;background: white;}\
-		.video h5{margin-bottom: 22px;}\
-		.video video{width: 940px;}\
-		.video i{position: absolute;top: 13px;right: 12px;width: 11px;height: 10px;cursor: pointer;background: url(res/images/sprite.png) no-repeat -243px 0;}</style>",
-	coverCssText:"width: auto;height: auto;position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: #333;opacity: 0.5;-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(opacity=50)'",
-	locationCssText:"position: fixed;left: 0;right: 0;top: 0;bottom: 0;text-align: center"
-};
 //初始化一个弹窗
 var videoPopup=new Popup(video.html,video.css,video.coverCssText,video.locationCssText);
 //打开弹窗
@@ -187,3 +131,105 @@ function getVideoNode(event){
 }
 
 
+//获取课程列表
+
+//获取相关节点
+var tab=left.querySelector(".tab");
+var tabButton=tab.getElementsByTagName("button");
+var Left=getElementsByClassName(document,"left")[0];
+var pageno=getElementsByClassName(Left,"pageno")[0];
+var pagenoi=pageno.getElementsByTagName("i");
+var backward=getElementsByClassName(Left,"backward")[0];
+var forward=getElementsByClassName(Left,"forward")[0];
+//页面加载时导入默认课程数据
+window.onload=function(){
+	requestCoures(1,20,10);//发起默认请求
+	backward.style.cursor="default";
+}
+
+//tab点击切换
+addEvent(tab,"click",switchTab);//样式切换
+addEvent(tab,"click",function(event){
+	Event(event);
+	var target=Target(event);
+	if(target==tabButton[1]){
+		requestCoures(1,20,20);//切换后默认显示第一页
+	}else if(target==tabButton[0]){
+		requestCoures(1,20,10);////切换后默认显示第一页
+	}
+});
+
+//类型判断
+
+var couresType={};//创建一个全局对象,用于类型判断
+
+addEvent(tab,"click",function(event){
+	Event(event);
+	var target=Target(event);
+	if(target==tabButton[0]){
+		var type=10;
+	}else if(target==tabButton[1]){
+		var type=20;
+	}
+	couresType.type=type;
+});
+
+
+//点击翻页器
+addEvent(pageno,"click",function(event){
+	Event(event);
+	var target=Target(event);
+	if(target!=pageno){
+		var type=couresType.type?couresType.type:10;//判断类型
+		requestCoures(readText(target),20,type);//发起点击请求
+		if((target!=pagenoi[0])&&(target!=pagenoi[pagenoi.length-1])){
+			backward.style.cursor="pointer";
+			forward.style.cursor="pointer";
+		}else if(target==pagenoi[0]){
+			backward.style.cursor="default";
+			forward.style.cursor="pointer";
+		}else if(target==pagenoi[pagenoi.length-1]){
+			forward.style.cursor="default";
+			backward.style.cursor="pointer";
+		}
+	}
+});
+//后退
+addEvent(backward,"click",function(event){
+	for(var j=0;j<pagenoi.length;j++){//循环遍历
+		if((pagenoi[j].style.color=="white")&&(j!=0)){//判断当前状态
+			var type=couresType.type?couresType.type:10;//判断类型
+			requestCoures(j,20,type);//发起后退请求
+			if(j==1){
+				backward.style.cursor="default";
+			}else{
+				backward.style.cursor="pointer";
+				forward.style.cursor="pointer";
+			}
+		}
+	}
+});
+//前进
+addEvent(forward,"click",function(event){
+	for(var j=0;j<pagenoi.length;j++){//循环遍历
+		if((pagenoi[j].style.color=="white")&&(j!=pagenoi.length-1)){//判断当前状态
+			var type=couresType.type?couresType.type:10;//判断类型
+			requestCoures(j+2,20,type);//发起前进请求
+			if(j==pagenoi.length-2){
+				forward.style.cursor="default";
+			}else{
+				forward.style.cursor="pointer";
+				backward.style.cursor="pointer";
+			}
+		}
+	}	
+});
+
+//最热排行
+//页面加载时发起请求
+addEvent(window,"load",function(){
+	var rankCouresPara="";//查询参数
+	var rankApi='http://study.163.com/webDev/hotcouresByCategory.htm';//请求地址
+	var rankCouresList=new GetList(rankApi,rankCouresPara);//初始化一个课程列表
+	rankCouresList.get();//获取课程数据
+});

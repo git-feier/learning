@@ -1,11 +1,11 @@
 /*由js实现课程列表hover状态*/
 /*利用relative在li元素上进行布局*/
-.jshover.ul.li{position: relative;left: -10px;top: -14px;margin: 0px 20px 0 0px;box-shadow: none;} 
+.jshover.ul.li{position: relative;left: -10px;top: -13px;margin: 0px 20px 0 0px;box-shadow: none;} 
 .jshover.ul.jcover{position: relative;width: 470px;height: 228px;padding: 10px 0 0 10px;background: white;box-shadow: 1px 1px 2px #c1c0c0,-1px -1px 2px #d3d1d2;}
-.jshover.ul.h5{display: inline-block;margin: 3px 0 2px 18px;font: 18px/20px "微软雅黑";color: #39a030;vertical-align: top;}
+.jshover.ul.h5{display: inline-block;width: 225px;margin: 3px 0 2px 18px;font: 18px/20px "微软雅黑";color: #39a030;vertical-align: top;}
 .jshover.ul.jnormal{display: none;}
 .jshover.ul.jhover{display: inline-block;position: absolute;left: 256px;top: 46px;font: 12px/20px "微软雅黑";color: #666;}
 .jshover.ul.span{margin: 0;}
 .jshover.ul.jpeople{margin-bottom: 7px;}
 .jshover.ul.jpeople:before{margin:4px 6px 4px 1px;content: "";display: inline-block;width: 9px;height: 12px;background: url(../../res/images/sprite.png) no-repeat -234px 0;vertical-align: middle;}
-.jshover.ul.describe{display: block;margin-top: 19px;margin-left: -10px;padding: 17px 33px 18px 38px;font: 14px/24px "微软雅黑";color: #666;background: #f8f8f8;}
+.jshover.ul.describe{display: inline-block;width: 437px;height: 48px;overflow: hidden;margin: 19px 0 -24px -10px;padding: 17px 33px 18px 10px;font: 14px/24px "微软雅黑";color: #666;background: #f8f8f8;}

@@ -47,7 +47,7 @@ ul{font-size: 0;}
 .center{width: 1206px;margin: 0 auto;}
 /*两栏布局*/
 .left,.right{display: inline-block;}
-.left{width: 980px;}
+.left{width: 980px;position: relative;}
 .right{width: 225px;margin-top: 3px;margin-left: 1px;}
 
 /*左栏*/
@@ -64,14 +64,14 @@ ul{font-size: 0;}
 .left ul li .normal{height: 82px;margin-left: 5px;}
 .left ul li span{display: block;margin-top: 10px;}
 .left ul li .normal .publisher{font: 12px/1 "微软雅黑";color: #999;}
-.left ul li .normal .people{width: 40px;height: 16px;border: 1px solid #ddd;font: 8px/16px "微软雅黑";color: #bbb;border-radius: 1px;} /*ie8不兼容border-radius*/
+.left ul li .normal .people{display: inline-block;height: 16px;padding-right: 5px;border: 1px solid #ddd;font: 8px/16px "微软雅黑";color: #bbb;border-radius: 1px;} /*ie8不兼容border-radius*/
 .left ul li .people:before{content: "";display: inline-block;width: 9px;height: 12px;margin:2px 6px 2px 3px;background: url(../../res/images/sprite.png) no-repeat -234px 0;vertical-align: middle;}
 .left ul li .normal .price{font: 12px/1 "微软雅黑";color: #ff3f00;}
 .left ul li .hover{display: none;}
 /*翻页器*/
-.left .turn-page{width: 302px;height: 20px;margin-top: 31px;margin-left: 658px;text-align: center;vertical-align: middle;}
+.left .turn-page{/*width: 302px;*/position: absolute;right: 20px;height: 20px;margin-top: 31px;margin-left: 658px;text-align: center;vertical-align: middle;}
 .left .turn-page i{display: inline-block;width: 30px;font: 14px/20px "微软雅黑";color: white;background: #9dd8b1;}
-.left .turn-page .pageno{display: inline-block;width: 224px;padding: 0 9px;}
+.left .turn-page .pageno{display: inline-block;/*width: 224px;*/padding: 0 9px;}
 .left .turn-page .pageno i{width: 20px;margin: 0 4px;color: #666;background: transparent;}
 /*hover状态*/
 .left .turn-page:hover{cursor: pointer;}
@@ -93,7 +93,7 @@ ul{font-size: 0;}
 .right .hot-rank ul li:hover{border-right: 1px solid #cbcbcb;}
 .right .hot-rank ul li img{display: inline-block;width: 50px;height: 50px;background: blue;}
 .right .hot-rank ul li div{display: inline-block;height: 50px;margin-left: 12px;vertical-align: top;}
-.right .hot-rank ul li div h5{margin-bottom: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font: 14px/1 "微软雅黑";}
+.right .hot-rank ul li div h5{width: 140px;margin-bottom: 10px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;font: 14px/1 "微软雅黑";}
 .right .hot-rank ul li div span{display: inline-block;font: 8px/14px "微软雅黑";color: #bbb;}
 .right .hot-rank ul li div span:before{content: "";display: inline-block;width: 9px;height: 12px;margin:1px 6px 1px 1px;background: url(../../res/images/sprite.png) no-repeat -234px 0;vertical-align: middle;}
 

@@ -113,6 +113,13 @@ function inputPrompt(textNode,passwordNode,parentNode,textPrompt,passwordPrompt)
     }       
 }
 //textContent兼容函数
-function textContent(node){
+function readText(node){
     return node.textContent||node.innerText;
+}
+function writeText(node,value){
+    if(node.textContent){
+        node.textContent=value;
+    }else{
+        node.innerText=value;
+    }
 }
