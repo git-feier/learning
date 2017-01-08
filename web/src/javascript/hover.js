@@ -18,7 +18,7 @@ function hover(event){
 	var p=getElementsByClassName(li,"hover")[1];
 	var span=div.getElementsByTagName("span");
 	if(event.type=="mouseenter"){
-		li.className="jshover ul li";
+		li.className+=" jshover ul li";
 		cover.className+=" jshover ul jcover";
 		h5.className="jshover ul h5";
 		normal.className+=" jshover ul jnormal";
@@ -29,7 +29,7 @@ function hover(event){
 		span[0].className+=" jpeople";
 		p.className+=" jshover ul describe";
 	}else if(event.type=="mouseleave"){
-			li.className="";
+			li.className=li.className=="hidden jshover ul li"?"hidden":"";
 			cover.className="cover";
 			h5.className="";
 			normal.className="normal";

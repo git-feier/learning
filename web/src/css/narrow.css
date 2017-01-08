@@ -1,0 +1,20 @@
+/*窄屏布局*/
+@media screen and (max-width: 1205px){
+	body{width: 1364px;}
+	.top-notify i{margin-left: 416px;}
+	.nav a[href*="open"]{margin-left: 166px;}
+	.jsclick.nav.a.open{margin-left: 114px;}
+	.product li{width: 339px;}
+	.product li p{width: 178px;}
+	.work li:first-child{width: 194px;}
+	.work li:first-child img{width: 194px;height: 219px;}
+	.work .last{width: 194px;}
+	.work .last img{width: 194px;height: 219px;}
+	.center{width: 954px;}
+	.left{width: 728px;}
+	.left ul li{margin-right: 17px;}
+	.left ul .hidden{display: none;}   /* 隐藏多余的item */
+	.jshover.ul.li{margin: 0px 17px 0 0px;}
+	.left .turn-page{margin-left: 406px;}
+	.footer{padding-left: 212px;padding-right: 172px;}
+}

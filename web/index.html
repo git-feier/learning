@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=8,chrome=1"> -->
+	<meta name="description" content="网易前端微专业开发实践作业">
 	<title>EDU 网易教育产品</title>
 	<link rel="stylesheet" type="text/css" href="src/css/reset.css">
 	<link rel="stylesheet" type="text/css" href="src/css/base.css">
 	<link rel="stylesheet" type="text/css" href="src/css/hover.css">
 	<link rel="stylesheet" type="text/css" href="src/css/click.css">
+	<link rel="stylesheet" type="text/css" href="src/css/narrow.css">
 	<style type="text/css"></style>
 </head>
 <body>
@@ -66,7 +68,7 @@
 				<li><img src="res/images/work02.jpg"></li>
 				<li><img src="res/images/work03.jpg"></li>
 				<li><img src="res/images/work04.jpg"></li>
-				<li><img src="res/images/work05.jpg"></li>
+				<li class="last"><img src="res/images/work05.jpg"></li>
 			</ul>
 		<!-- 工作环境 -->
 		</div>
@@ -337,7 +339,7 @@
 								<p class="hover">生活中不乏有很多美好的画面,何不用画笔记录下来呢?那么就跟几分钟网一起来记录美好画面吧!</p>
 							</div>
 						</li>
-						<li>
+						<li class="hidden">
 							<div class="cover">
 								<img src="#">
 								<h5>手绘画系列教程</h5>
@@ -354,7 +356,7 @@
 								<p class="hover">生活中不乏有很多美好的画面,何不用画笔记录下来呢?那么就跟几分钟网一起来记录美好画面吧!</p>
 							</div>
 						</li>
-						<li>
+						<li class="hidden">
 							<div class="cover">
 								<img src="#">
 								<h5>手绘画系列教程</h5>
@@ -371,7 +373,7 @@
 								<p class="hover">生活中不乏有很多美好的画面,何不用画笔记录下来呢?那么就跟几分钟网一起来记录美好画面吧!</p>
 							</div>
 						</li>
-						<li>
+						<li class="hidden">
 							<div class="cover">
 								<img src="#">
 								<h5>手绘画系列教程</h5>
@@ -388,7 +390,7 @@
 								<p class="hover">生活中不乏有很多美好的画面,何不用画笔记录下来呢?那么就跟几分钟网一起来记录美好画面吧!</p>
 							</div>
 						</li>
-						<li>
+						<li class="hidden">
 							<div class="cover">
 								<img src="#">
 								<h5>手绘画系列教程</h5>
@@ -405,7 +407,7 @@
 								<p class="hover">生活中不乏有很多美好的画面,何不用画笔记录下来呢?那么就跟几分钟网一起来记录美好画面吧!</p>
 							</div>
 						</li>
-						<li>
+						<li class="hidden">
 							<div class="cover">
 								<img src="#">
 								<h5>手绘画系列教程</h5>
@@ -547,6 +549,10 @@
 		</ul>
 	</div>
 	<!-- 页脚 -->
+	
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="src/javascript/MediaQueryPolyfill/respond.min.js"></script>
+	<![endif]-->
 	<script type="text/javascript" src="src/javascript/html.js"></script>
 	<script type="text/javascript" src="src/javascript/shim.js"></script>
 	<script type="text/javascript" src="src/javascript/hover.js"></script>

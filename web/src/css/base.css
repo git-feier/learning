@@ -69,9 +69,9 @@ ul{font-size: 0;}
 .left ul li .normal .price{font: 12px/1 "微软雅黑";color: #ff3f00;}
 .left ul li .hover{display: none;}
 /*翻页器*/
-.left .turn-page{/*width: 302px;*/position: absolute;right: 20px;height: 20px;margin-top: 31px;margin-left: 658px;text-align: center;vertical-align: middle;}
+.left .turn-page{position: absolute;right: 20px;height: 20px;margin-top: 31px;margin-left: 658px;text-align: center;vertical-align: middle;}
 .left .turn-page i{display: inline-block;width: 30px;font: 14px/20px "微软雅黑";color: white;background: #9dd8b1;}
-.left .turn-page .pageno{display: inline-block;/*width: 224px;*/padding: 0 9px;}
+.left .turn-page .pageno{display: inline-block;padding: 0 9px;}
 .left .turn-page .pageno i{width: 20px;margin: 0 4px;color: #666;background: transparent;}
 /*hover状态*/
 .left .turn-page:hover{cursor: pointer;}

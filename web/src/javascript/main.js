@@ -137,13 +137,20 @@ function getVideoNode(event){
 var tab=left.querySelector(".tab");
 var tabButton=tab.getElementsByTagName("button");
 var Left=getElementsByClassName(document,"left")[0];
+var LeftLi=Left.getElementsByTagName("li");
 var pageno=getElementsByClassName(Left,"pageno")[0];
 var pagenoi=pageno.getElementsByTagName("i");
 var backward=getElementsByClassName(Left,"backward")[0];
 var forward=getElementsByClassName(Left,"forward")[0];
+//全局变量
+var couresType={};//创建一个全局对象,用于课程类型判断
+var psize=0;//创建一个变量,用于保存请求课程数目
+
 //页面加载时导入默认课程数据
 window.onload=function(){
-	requestCoures(1,20,10);//发起默认请求
+	var leftWidth=getStyle(Left,"width");
+	psize=leftWidth=="980px"?20:15;//判断宽窄屏
+	requestCoures(1,psize,10);//发起默认请求
 	backward.style.cursor="default";
 }
 
@@ -152,17 +159,17 @@ addEvent(tab,"click",switchTab);//样式切换
 addEvent(tab,"click",function(event){
 	Event(event);
 	var target=Target(event);
+	var leftWidth=getStyle(Left,"width");
+	psize=leftWidth=="980px"?20:15;//判断宽窄屏
 	if(target==tabButton[1]){
-		requestCoures(1,20,20);//切换后默认显示第一页
+		requestCoures(1,psize,20);//切换后默认显示第一页
 	}else if(target==tabButton[0]){
-		requestCoures(1,20,10);////切换后默认显示第一页
+		requestCoures(1,psize,10);////切换后默认显示第一页
 	}
+	displayItem(psize);//显示由窄屏变宽屏后,宽屏再次点击时隐藏的item
 });
 
-//类型判断
-
-var couresType={};//创建一个全局对象,用于类型判断
-
+//课程类型判断
 addEvent(tab,"click",function(event){
 	Event(event);
 	var target=Target(event);
@@ -180,8 +187,10 @@ addEvent(pageno,"click",function(event){
 	Event(event);
 	var target=Target(event);
 	if(target!=pageno){
-		var type=couresType.type?couresType.type:10;//判断类型
-		requestCoures(readText(target),20,type);//发起点击请求
+		var leftWidth=getStyle(Left,"width");
+		psize=leftWidth=="980px"?20:15;////判断宽窄屏
+		var type=couresType.type?couresType.type:10;//判断课程类型
+		requestCoures(readText(target),psize,type);//发起点击请求
 		if((target!=pagenoi[0])&&(target!=pagenoi[pagenoi.length-1])){
 			backward.style.cursor="pointer";
 			forward.style.cursor="pointer";
@@ -192,20 +201,24 @@ addEvent(pageno,"click",function(event){
 			forward.style.cursor="default";
 			backward.style.cursor="pointer";
 		}
+		displayItem(psize);//显示由窄屏变宽屏后,宽屏再次点击时隐藏的item
 	}
 });
 //后退
 addEvent(backward,"click",function(event){
 	for(var j=0;j<pagenoi.length;j++){//循环遍历
 		if((pagenoi[j].style.color=="white")&&(j!=0)){//判断当前状态
-			var type=couresType.type?couresType.type:10;//判断类型
-			requestCoures(j,20,type);//发起后退请求
+			var leftWidth=getStyle(Left,"width");
+			psize=leftWidth=="980px"?20:15;//判断宽窄屏
+			var type=couresType.type?couresType.type:10;//判断课程类型
+			requestCoures(j,psize,type);//发起后退请求
 			if(j==1){
 				backward.style.cursor="default";
 			}else{
 				backward.style.cursor="pointer";
 				forward.style.cursor="pointer";
 			}
+			displayItem(psize);//显示由窄屏变宽屏后,宽屏再次点击时隐藏的item
 		}
 	}
 });
@@ -213,17 +226,46 @@ addEvent(backward,"click",function(event){
 addEvent(forward,"click",function(event){
 	for(var j=0;j<pagenoi.length;j++){//循环遍历
 		if((pagenoi[j].style.color=="white")&&(j!=pagenoi.length-1)){//判断当前状态
-			var type=couresType.type?couresType.type:10;//判断类型
-			requestCoures(j+2,20,type);//发起前进请求
+			var leftWidth=getStyle(Left,"width");
+			psize=leftWidth=="980px"?20:15;//判断宽窄屏
+			var type=couresType.type?couresType.type:10;//判断课程类型
+			requestCoures(j+2,psize,type);//发起前进请求
 			if(j==pagenoi.length-2){
 				forward.style.cursor="default";
 			}else{
 				forward.style.cursor="pointer";
 				backward.style.cursor="pointer";
 			}
+			displayItem(psize);//显示由窄屏变宽屏后,宽屏再次点击时隐藏的item
 		}
 	}	
 });
+
+//宽窄屏互变样式设置
+window.onresize=function(){
+	var leftWidth=getStyle(Left,"width");//获取实际宽度
+	if((leftWidth=="980px")&&(psize==15)){//变宽屏时
+		var n=leftLi.length-psize;
+		for(var i=0;i<n;i++){
+			leftLi[psize+i].style.display="none";//隐藏默认多余的item
+		}
+	}else if((leftWidth!="980px")&&(psize==20)){//变窄屏时
+		for(var k=1;k<6;k++){
+			leftLi[psize-k].style.display="none";//隐藏宽屏多余的item
+		}
+	}
+}
+// 显示由窄屏变宽屏后,宽屏再次点击时隐藏的item
+function displayItem(psize){
+	var leftWidth=getStyle(Left,"width");//获取实际宽度
+	if((leftWidth=="980px")&&(psize==20)){
+		for(var i=0;i<psize;i++){
+			leftLi[i].style.display="inline-block";//显示默认全部item
+		}
+	}
+}
+
+
 
 //最热排行
 //页面加载时发起请求

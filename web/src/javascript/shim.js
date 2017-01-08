@@ -123,3 +123,12 @@ function writeText(node,value){
         node.innerText=value;
     }
 }
+//getStyle函数(获取元素的实际样式)
+var getStyle=function(element, cssPropertyName){
+    if(!window.getComputedStyle){//如果不支持window.getComputedStyle
+      window.getComputedStyle=function(element){//则创建window.getComputedStyle函数
+         return element.currentStyle;//ie中支持currentStyle,用它模拟实现
+      }
+    }
+    return window.getComputedStyle(element)[cssPropertyName];//利用window.getComputedStyle获取结果
+}
